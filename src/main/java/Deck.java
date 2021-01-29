@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck {
 
     private ArrayList<Card> cards;
 
-    public Deck(){
+    public Deck() {
         this.cards = new ArrayList<>();
     }
 
@@ -13,6 +14,22 @@ public class Deck {
     }
 
     public void addCard(Card card) {
-        cards.add(card);
+        if (!cards.contains(card)) {
+            cards.add(card);
+        }
+    }
+
+    public void populate() {
+        Card card;
+        for (SuitType suit : SuitType.values()) {
+            for (RankType rank : RankType.values())
+                addCard(new Card(suit, rank));
+        }
+        Collections.shuffle(cards);
+    }
+
+    public Card dealCard() {
+        return cards.remove(0);
+
     }
 }

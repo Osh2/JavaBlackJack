@@ -1,16 +1,17 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class DeckTest {
 
     public Deck deck;
+    public Card card;
 
     @Before
     public void before(){
         deck = new Deck();
+        card = new Card(SuitType.HEARTS, RankType.ACE);
     }
 
     @Test
@@ -25,8 +26,31 @@ public class DeckTest {
 
     @Test
     public void canAddCardToList() {
-        Card card = new Card(SuitType.HEARTS, RankType.ACE);
         deck.addCard(card);
         assertEquals(1, deck.getCardsCount());
+    }
+
+    @Test
+    public void cantAddSameCardTwice() {
+        deck.addCard(card);
+        deck.addCard(card);
+        assertEquals(1, deck.getCardsCount());
+    }
+
+    @Test
+    public void canPopulateCards(){
+        deck.populate();
+        assertEquals(52, deck.getCardsCount());
+    }
+
+    @Test
+    public void canDealCard() {
+        deck.populate();
+        deck.dealCard();
+        assertEquals(51, deck.getCardsCount());
+        deck.dealCard();
+        assertEquals(50, deck.getCardsCount());
+        deck.dealCard();
+        assertEquals(49, deck.getCardsCount());
     }
 }
