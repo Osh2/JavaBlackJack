@@ -23,4 +23,9 @@ public class CardTest {
     public void canGetSuit() {
         assertEquals(SuitType.CLUBS, card.getSuit());
     }
+
+    @Test
+    public void canGetRank() {
+        assertEquals(RankType.THREE, card.getRank());
+    }
 }
