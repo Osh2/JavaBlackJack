@@ -18,7 +18,6 @@ public class CardTest {
         assertNotNull(card);
     }
 
-
     @Test
     public void canGetSuit() {
         assertEquals(SuitType.CLUBS, card.getSuit());
