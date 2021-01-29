@@ -11,4 +11,8 @@ public class Deck {
     public int getCardsCount() {
         return cards.size();
     }
+
+    public void addCard(Card card) {
+        cards.add(card);
+    }
 }

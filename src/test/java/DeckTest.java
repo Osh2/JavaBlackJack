@@ -22,4 +22,11 @@ public class DeckTest {
     public void cardListStartsEmpty() {
         assertEquals(0, deck.getCardsCount());
     }
+
+    @Test
+    public void canAddCardToList() {
+        Card card = new Card(SuitType.HEARTS, RankType.ACE);
+        deck.addCard(card);
+        assertEquals(1, deck.getCardsCount());
+    }
 }
