@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class DeckTest {
@@ -17,5 +18,8 @@ public class DeckTest {
     assertNotNull(deck);
     }
 
-
+    @Test
+    public void cardListStartsEmpty() {
+        assertEquals(0, deck.getCardsCount());
+    }
 }
