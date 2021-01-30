@@ -10,4 +10,12 @@ public class Player {
         this.hand = new ArrayList<>();
         this.name = name;
     }
+
+    public int getHandSize() {
+        return hand.size();
+    }
+
+    public String getName() {
+        return name;
+    }
 }
