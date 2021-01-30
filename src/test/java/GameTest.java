@@ -12,6 +12,7 @@ public class GameTest {
     Player player2;
 
 
+
     @Before
     public void before(){
         Player player1 = new Player("Chris");
@@ -58,5 +59,36 @@ public class GameTest {
         game.addPlayer(player4);
         assertEquals(player3, game.getPlayer(0));
         assertEquals(player4, game.getPlayer(1));
+    }
+
+    @Test
+    public void canDealCardToPlayer() {
+        game.getDeck().populate();
+        assertEquals(0, game.getPlayer(0).getHandSize());
+        game.dealCardToPlayer(0);
+        assertEquals(1, game.getPlayer(0).getHandSize());
+        assertEquals(0, game.getPlayer(1).getHandSize());
+        game.dealCardToPlayer(1);
+        assertEquals(1, game.getPlayer(1).getHandSize());
+    }
+
+    @Test
+    public void canDealCardToDealer() {
+        game.getDeck().populate();
+        assertEquals(0, game.getDealer().getHandSize());
+        game.dealCardToDealer();
+        assertEquals(1, game.getDealer().getHandSize());
+    }
+
+    @Test
+    public void everyoneHasACard() {
+        assertEquals(0, game.getPlayer(0).getHandSize());
+        assertEquals(0, game.getPlayer(1).getHandSize());
+        assertEquals(0, game.getDealer().getHandSize());
+        game.round1();
+        assertEquals(1, game.getPlayer(0).getHandSize());
+        assertEquals(1, game.getPlayer(1).getHandSize());
+        assertEquals(1, game.getDealer().getHandSize());
+        assertEquals(49, game.getDeck().getCardsCount());
     }
 }

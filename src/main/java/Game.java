@@ -32,4 +32,22 @@ public class Game {
     public Player getPlayer(int index) {
         return players.get(index);
     }
+
+    public void dealCardToPlayer(int index){
+        Card dealtCard = deck.dealCard();
+        getPlayer(index).addCard(dealtCard);
+    }
+
+    public void dealCardToDealer(){
+        Card dealtCard = deck.dealCard();
+        dealer.addCard(dealtCard);
+    }
+
+    public void round1() {
+        deck.populate();
+        for(Player player : players){
+            dealCardToPlayer(players.indexOf(player));
+        }
+        dealCardToDealer();
+    }
 }
