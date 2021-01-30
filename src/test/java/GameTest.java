@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class GameTest {
 
@@ -22,5 +22,10 @@ public class GameTest {
     @Test
     public void gameExists(){
         assertNotNull(game);
+    }
+
+    @Test
+    public void gameHasPlayers() {
+        assertEquals(2, game.getPlayers());
     }
 }

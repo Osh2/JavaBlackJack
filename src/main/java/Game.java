@@ -16,4 +16,8 @@ public class Game {
     public void addPlayer(Player player){
         players.add(player);
     }
+
+    public int getPlayers() {
+        return players.size();
+    }
 }
