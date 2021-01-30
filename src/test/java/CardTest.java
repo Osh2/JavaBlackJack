@@ -31,5 +31,7 @@ public class CardTest {
     @Test
     public void canGetRankValue(){
         assertEquals(3, card.getRankValue());
+        Card aceHearts = new Card(SuitType.HEARTS, RankType.ACE);
+        assertEquals(1, aceHearts.getRankValue());
     }
 }
