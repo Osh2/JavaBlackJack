@@ -27,4 +27,11 @@ public class PlayerTest {
     public void playerHasName(){
         assertEquals("Osh", player.getName());
     }
+
+    @Test
+    public void canAddCardToHand() {
+        Card card = new Card(SuitType.DIAMONDS, RankType.FIVE);
+        player.addCard(card);
+        assertEquals(1, player.getHandSize());
+    }
 }

@@ -18,4 +18,8 @@ public class Player {
     public String getName() {
         return name;
     }
+
+    public void addCard(Card card) {
+        hand.add(card);
+    }
 }
