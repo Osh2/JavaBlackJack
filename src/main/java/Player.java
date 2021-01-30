@@ -22,4 +22,12 @@ public class Player {
     public void addCard(Card card) {
         hand.add(card);
     }
+
+    public SuitType getHandCardSuit() {
+        return hand.get(0).getSuit();
+    }
+
+    public int getHandCardRankValue() {
+        return hand.get(0).getRankValue();
+    }
 }

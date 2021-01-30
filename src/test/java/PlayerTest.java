@@ -7,10 +7,12 @@ import static org.junit.Assert.assertNotNull;
 public class PlayerTest {
 
     Player player;
+    Card card;
 
     @Before
     public void before(){
         player = new Player("Osh");
+        card = new Card(SuitType.DIAMONDS, RankType.FIVE);
     }
 
     @Test
@@ -30,8 +32,19 @@ public class PlayerTest {
 
     @Test
     public void canAddCardToHand() {
-        Card card = new Card(SuitType.DIAMONDS, RankType.FIVE);
         player.addCard(card);
         assertEquals(1, player.getHandSize());
+    }
+
+    @Test
+    public void canGetHandCardSuit() {
+        player.addCard(card);
+        assertEquals(SuitType.DIAMONDS, player.getHandCardSuit());
+    }
+
+    @Test
+    public void canGetHandCardRankValue() {
+        player.addCard(card);
+        assertEquals(5, player.getHandCardRankValue());
     }
 }
