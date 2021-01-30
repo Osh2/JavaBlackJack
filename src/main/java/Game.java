@@ -20,4 +20,8 @@ public class Game {
     public int getPlayers() {
         return players.size();
     }
+
+    public Dealer getDealer() {
+        return dealer;
+    }
 }

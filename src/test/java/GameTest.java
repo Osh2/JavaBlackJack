@@ -14,6 +14,8 @@ public class GameTest {
     public void before(){
         Player player1 = new Player("Chris");
         Player player2 = new Player("Sarah");
+        dealer = new Dealer();
+        deck = new Deck();
         game = new Game(dealer, deck);
         game.addPlayer(player1);
         game.addPlayer(player2);
@@ -27,5 +29,10 @@ public class GameTest {
     @Test
     public void gameHasPlayers() {
         assertEquals(2, game.getPlayers());
+    }
+
+    @Test
+    public void gameHasDealer() {
+        assertEquals(dealer, game.getDealer());
     }
 }
