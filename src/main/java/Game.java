@@ -17,11 +17,19 @@ public class Game {
         players.add(player);
     }
 
-    public int getPlayers() {
+    public int getNumPlayers() {
         return players.size();
     }
 
     public Dealer getDealer() {
         return dealer;
+    }
+
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public Player getPlayer(int index) {
+        return players.get(index);
     }
 }
