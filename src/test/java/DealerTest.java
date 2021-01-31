@@ -42,4 +42,13 @@ public class DealerTest {
         dealer.addCard(card);
         assertEquals(5, dealer.getHandCardRankValue());
     }
+
+    @Test
+    public void canGetHandTotal() {
+        dealer.addCard(card);
+        Card card2 = new Card(SuitType.SPADES, RankType.ACE);
+        dealer.addCard(card2);
+        assertEquals(6, dealer.getHandTotal());
+    }
+
 }

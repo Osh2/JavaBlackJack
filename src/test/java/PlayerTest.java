@@ -47,4 +47,12 @@ public class PlayerTest {
         player.addCard(card);
         assertEquals(5, player.getHandCardRankValue());
     }
+
+    @Test
+    public void canGetHandTotal() {
+        player.addCard(card);
+        Card card2 = new Card(SuitType.SPADES, RankType.ACE);
+        player.addCard(card2);
+        assertEquals(6, player.getHandTotal());
+    }
 }

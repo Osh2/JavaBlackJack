@@ -8,20 +8,14 @@ public class GameTest {
     Game game;
     Dealer dealer;
     Deck deck;
-    Player player1;
-    Player player2;
-
-
 
     @Before
     public void before(){
         Player player1 = new Player("Chris");
-        Player player2 = new Player("Sarah");
         dealer = new Dealer();
         deck = new Deck();
         game = new Game(dealer, deck);
         game.addPlayer(player1);
-        game.addPlayer(player2);
     }
 
     @Test
@@ -31,7 +25,7 @@ public class GameTest {
 
     @Test
     public void gameHasPlayers() {
-        assertEquals(2, game.getNumPlayers());
+        assertEquals(1, game.getNumPlayers());
     }
 
     @Test
@@ -67,9 +61,6 @@ public class GameTest {
         assertEquals(0, game.getPlayer(0).getHandSize());
         game.dealCardToPlayer(0);
         assertEquals(1, game.getPlayer(0).getHandSize());
-        assertEquals(0, game.getPlayer(1).getHandSize());
-        game.dealCardToPlayer(1);
-        assertEquals(1, game.getPlayer(1).getHandSize());
     }
 
     @Test
@@ -81,15 +72,13 @@ public class GameTest {
     }
 
     @Test
-    public void everyoneHasACard() {
+    public void playerAndDealerHave2CardsEach() {
         assertEquals(0, game.getPlayer(0).getHandSize());
-        assertEquals(0, game.getPlayer(1).getHandSize());
         assertEquals(0, game.getDealer().getHandSize());
-        game.startRound1();
-        assertEquals(1, game.getPlayer(0).getHandSize());
-        assertEquals(1, game.getPlayer(1).getHandSize());
-        assertEquals(1, game.getDealer().getHandSize());
-        assertEquals(49, game.getDeck().getCardsCount());
+        game.startRound();
+        assertEquals(2, game.getPlayer(0).getHandSize());
+        assertEquals(2, game.getDealer().getHandSize());
+        assertEquals(48, game.getDeck().getCardsCount());
     }
 
     //currently the decideWinner method only returns the first
@@ -97,12 +86,12 @@ public class GameTest {
     public void shouldDecideWinner() {
         Game game2 = new Game(dealer, deck);
         game2.addPlayer(new Player("Justin"));
-        game2.startRound1();
+        game2.startRound();
         String winner =  game2.decideWinner();
         assertNotEquals("", winner);
         System.out.println(winner);
-        System.out.println(game2.getDealer().getHandCardRankValue());
-        System.out.println(game2.getPlayer(0).getHandCardRankValue());
+        System.out.println(game2.getDealer().getHandTotal());
+        System.out.println(game2.getPlayer(0).getHandTotal());
 
     }
 }

@@ -23,4 +23,12 @@ public class Dealer {
     public int getHandCardRankValue() {
         return hand.get(0).getRankValue();
     }
+
+    public int getHandTotal(){
+        int total = 0;
+        for(Card card : hand){
+            total += card.getRankValue();
+        }
+        return total;
+    }
 }
