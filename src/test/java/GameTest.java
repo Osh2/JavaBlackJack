@@ -85,10 +85,24 @@ public class GameTest {
         assertEquals(0, game.getPlayer(0).getHandSize());
         assertEquals(0, game.getPlayer(1).getHandSize());
         assertEquals(0, game.getDealer().getHandSize());
-        game.round1();
+        game.startRound1();
         assertEquals(1, game.getPlayer(0).getHandSize());
         assertEquals(1, game.getPlayer(1).getHandSize());
         assertEquals(1, game.getDealer().getHandSize());
         assertEquals(49, game.getDeck().getCardsCount());
+    }
+
+    //currently the decideWinner method only returns the first
+    @Test
+    public void shouldDecideWinner() {
+        Game game2 = new Game(dealer, deck);
+        game2.addPlayer(new Player("Justin"));
+        game2.startRound1();
+        String winner =  game2.decideWinner();
+        assertNotEquals("", winner);
+        System.out.println(winner);
+        System.out.println(game2.getDealer().getHandCardRankValue());
+        System.out.println(game2.getPlayer(0).getHandCardRankValue());
+
     }
 }
