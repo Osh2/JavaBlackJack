@@ -54,7 +54,6 @@ public class Game {
         dealCardToDealer();
     }
 
-
     public String decideWinner(){
         String winner = "";
         int dealerHand = getDealer().getHandTotal();
@@ -67,5 +66,16 @@ public class Game {
             }
         }
         return winner;
+    }
+
+    public void round2(){
+        if(dealer.getHandTotal() < 16){
+            dealCardToDealer();
+        }
+        for(Player player : players){
+            if(player.getHandTotal() < 16){
+                dealCardToPlayer(players.indexOf(player));
+            }
+        }
     }
 }

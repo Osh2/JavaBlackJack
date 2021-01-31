@@ -89,9 +89,15 @@ public class GameTest {
         game2.startRound();
         String winner =  game2.decideWinner();
         assertNotEquals("", winner);
-        System.out.println(winner);
-        System.out.println(game2.getDealer().getHandTotal());
-        System.out.println(game2.getPlayer(0).getHandTotal());
+    }
 
+    @Test
+    public void round2Changes(){
+        game.startRound();
+        String winner = game.decideWinner();
+        game.round2();
+        String r2Winner = game.decideWinner();
+        System.out.println(winner);
+        System.out.println(r2Winner);
     }
 }
